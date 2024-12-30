@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// alguns elementos do HTML por padrão possuem uma largura mínima a depender do navegador, assim, se faz necessário zerar o min-width, para que consigamos controlar a largura dos elementos sem essas diferenças
+* {
+    min-width: 0;
+}
