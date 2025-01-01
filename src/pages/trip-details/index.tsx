@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Calendar, CircleDashed, MapPin, Plus, Settings2, UserCog} from "lucide-react";
+import { Calendar, MapPin, Plus, Settings2} from "lucide-react";
 import { CreateActivityModal } from "./create-activity-modal";
 import { Activities } from "./activities";
 import { ImportantLinks } from "./important-links";
+import { Guests } from "./guests";
 
 
 export function TripDetailsPage() {
@@ -62,39 +63,7 @@ export function TripDetailsPage() {
 
                     <div className="w-full h-px bg-zinc-800" />
 
-                    <div className="space-y-6">
-                        <h2 className="font-semibold text-xl">Convidados</h2>
-                        <div className="space-y-5">
-                            <div className="flex items-center justify-between gap-4">
-                                <div className="space-y-1.5">
-                                    <span className="block font-medium text-zinc-100">
-                                        Vinicius Ventura
-                                    </span>
-                                    <span className="block text-xs text-zinc-400 truncate">
-                                        vinicius.ventura@ventech.com.br
-                                    </span>
-                                </div>
-                                <CircleDashed className="text-zinc-400 size-5 shrink-0" />
-                            </div>
-                            <div className="flex items-center justify-between gap-4">
-                                <div className="space-y-1.5">
-                                    <span className="block font-medium text-zinc-100">
-                                        Dev Ventura
-                                    </span>
-                                    <span className="block text-xs text-zinc-400 truncate">
-                                        dev.ventura@venth.com.br
-                                    </span>
-                                </div>
-                                <CircleDashed className="text-zinc-400 size-5 shrink-0" />
-                            </div>
-                        </div>
-                        <button 
-                            className="bg-zinc-800 text-zinc-200 rounded-lg px-5 h-11 font-medium flex items-center gap-2 hover:bg-zinc-700 w-full justify-center"
-                        >
-                            <UserCog className="size-5"/>
-                            Gerenciar convidados
-                        </button>
-                    </div>
+                    <Guests />
                 </div>
             </main>
 
