@@ -7,6 +7,7 @@
     min-width: 0;
 }
 
+// colocando isso, os ícones do input ficam com o padrão dark mode, ou seja, eles ficam brancos (o padrão é preto - light mode)
 input {
     color-scheme: dark;
 }
