@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Plus} from "lucide-react";
+import { Plus } from "lucide-react";
 import { CreateActivityModal } from "./create-activity-modal";
 import { Activities } from "./activities";
 import { ImportantLinks } from "./important-links";
 import { Guests } from "./guests";
+import { DestinationAndDateHeader } from "./destination-and-date-header";
 
 
 export function TripDetailsPage() {
@@ -19,7 +20,7 @@ export function TripDetailsPage() {
 
     return (
         <div className="max-w-6xl mx-auto py-10 px-6 space-y-8">
-            
+            <DestinationAndDateHeader />
             <main className="flex gap-16 px-4">
                 <div className="flex-1 space-y-6">
                     <div className="flex items-center justify-between">
