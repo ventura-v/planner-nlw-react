@@ -1,7 +1,19 @@
-import { Calendar, CircleCheck, CircleDashed, Link2, MapPin, Plus, Settings2, UserCog } from "lucide-react";
+import { useState } from "react";
+import { Calendar, CircleCheck, CircleDashed, Link2, MapPin, Plus, Settings2, UserCog} from "lucide-react";
+import { CreateActivityModal } from "./create-activity-modal";
 
 
 export function TripDetailsPage() {
+    const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] = useState(false);
+
+    const openCreateActivityModal = () => {
+        setIsCreateActivityModalOpen(true);
+    }
+
+    const closeCreateActivityModal = () => {
+        setIsCreateActivityModalOpen(false);
+    }
+
     return (
         <div className="max-w-6xl mx-auto py-10 px-6 space-y-8">
             <div className="flex items-center justify-between px-4 bg-zinc-900 h-16 rounded-xl shadow-shape">
@@ -33,6 +45,7 @@ export function TripDetailsPage() {
                         <h2 className="text-3xl font-semibold">Atividades</h2>
                         <button 
                             className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400"
+                            onClick={openCreateActivityModal}
                         >
                             <Plus className="size-5"/>
                             Cadastrar atividade
@@ -144,6 +157,12 @@ export function TripDetailsPage() {
                     </div>
                 </div>
             </main>
+
+            {isCreateActivityModalOpen && (
+                <CreateActivityModal
+                    closeCreateActivityModal={closeCreateActivityModal}
+                />
+            )}
         </div>
     )
 }
