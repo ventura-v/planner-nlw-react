@@ -11,16 +11,21 @@ interface DestinationAndDateStepProps {
     isGuestInputOpen: boolean,
     openGuestInput: () => void,
     closeGuestInput: () => void,
+    setDestination: (destination: string) => void,
+    eventStartAndEndDates: DateRange | undefined,
+    setEventStartAndEndDates: (dates: DateRange | undefined) => void,
 }
 
 export function DestinationAndDateStep({
     isGuestInputOpen,
     openGuestInput,
     closeGuestInput,
+    setDestination,
+    eventStartAndEndDates,
+    setEventStartAndEndDates,
 }: DestinationAndDateStepProps) {
 
     const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
-    const [eventStartAndEndDate, setEventStartAndEndDate] = useState<DateRange | undefined>();
 
     const openDatePicker = () => {
         setisDatePickerOpen(true);
@@ -31,9 +36,9 @@ export function DestinationAndDateStep({
     }
 
     const dispayedDate = 
-        (eventStartAndEndDate && eventStartAndEndDate.from && eventStartAndEndDate.to) ? 
-            format(eventStartAndEndDate.from, `d 'de' MMM 'até '`)
-                .concat(format(eventStartAndEndDate.to, `d 'de' MMM`))
+        (eventStartAndEndDates && eventStartAndEndDates.from && eventStartAndEndDates.to) ? 
+            format(eventStartAndEndDates.from, `d 'de' MMM 'até '`)
+                .concat(format(eventStartAndEndDates.to, `d 'de' MMM`))
         : 
             "Quando?";
 
@@ -46,6 +51,7 @@ export function DestinationAndDateStep({
                     type="text" 
                     placeholder="Para onde você vai?" 
                     className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+                    onChange={(event) => setDestination(event.target.value)}
                 />
             </div>
 
@@ -75,8 +81,8 @@ export function DestinationAndDateStep({
                                 day_selected: "bg-lime-400 text-zinc-900",
                             }}                            
                             mode="range" 
-                            selected={eventStartAndEndDate} 
-                            onSelect={setEventStartAndEndDate}
+                            selected={eventStartAndEndDates} 
+                            onSelect={setEventStartAndEndDates}
                         />
                     </div>
                 </div>
