@@ -37,10 +37,10 @@ export function DestinationAndDateStep({
 
     const dispayedDate = 
         (eventStartAndEndDates && eventStartAndEndDates.from && eventStartAndEndDates.to) ? 
-            format(eventStartAndEndDates.from, `d 'de' MMM 'até '`)
-                .concat(format(eventStartAndEndDates.to, `d 'de' MMM`))
+            format(eventStartAndEndDates.from, `MMM d 'to '`)
+                .concat(format(eventStartAndEndDates.to, `MMM d`))
         : 
-            "Quando?";
+            "When?";
 
     return (
         <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
@@ -49,14 +49,14 @@ export function DestinationAndDateStep({
                 <input 
                     disabled={isGuestInputOpen} 
                     type="text" 
-                    placeholder="Para onde você vai?" 
-                    className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+                    placeholder="Where are you going?" 
+                    className="bg-transparent text-lg placeholder-zinc-400 outline-none"
                     onChange={(event) => setDestination(event.target.value)}
                 />
             </div>
 
             <button 
-                className="flex items-center gap-2 text-left w-[240px]"
+                className="flex items-center gap-2 text-left flex-1"
                 disabled={isGuestInputOpen}
                 onClick={openDatePicker}
             >
@@ -69,7 +69,7 @@ export function DestinationAndDateStep({
                     <div className="rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
                         <div className="space-y-2">
                             <div className="flex items-center justify-between">
-                                <h2 className="text-lg font-semibold">Selecione a data</h2>
+                                <h2 className="text-lg font-semibold">Select the date</h2>
                                 <button type="button" onClick={closeDatePicker}>
                                     <X className="size-5 text-zinc-400" />
                                 </button>
@@ -95,16 +95,16 @@ export function DestinationAndDateStep({
             <div className="w-px h-6 bg-zinc-800" />
             
             {isGuestInputOpen ? (
-                <Button onClick={closeGuestInput} variant="secondary">
-                    Alterar local/data
+                <Button onClick={closeGuestInput} variant="secondary" size="higher">
+                    Change place/date
                     <Settings2 className="size-5"/>
                 </Button>
                 ) : (
                 <Button onClick={openGuestInput} variant="primary">
-                    Continuar
+                    Next
                     <ArrowRight className="size-5"/>
                 </Button>
-                )}
-            </div>
+            )}
+        </div>
     )
 }

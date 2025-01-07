@@ -27,14 +27,14 @@ export function InviteGuestsStep({
                     </span>
                 ) : (
                     <span className="text-lg text-zinc-400 flex-1">
-                        Quem estará na viagem?
+                        Who will be on the trip?
                     </span>
                 )}
             </button>
         
             <div className="w-px h-6 bg-zinc-800" />        
             <Button onClick={openConfirmTripModal} variant="primary">
-                Confirmar viagem
+                Confirm the trip!
                 <ArrowRight className="size-5"/>
             </Button>
         </div>

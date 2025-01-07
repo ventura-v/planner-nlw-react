@@ -6,6 +6,7 @@ import { DestinationAndDateStep } from "./steps/destination-and-date-stes"
 import { InviteGuestsStep } from "./steps/invite-guests-step"
 import { DateRange } from "react-day-picker"
 import { api } from "../../lib/axios"
+import { format } from "date-fns"
 
 export function CreateTripPage() {
   const navigate = useNavigate();
@@ -17,10 +18,7 @@ export function CreateTripPage() {
   const [ownerName, setOwnerName] = useState('');
   const [ownerEmail, setOwnerEmail] = useState('');
   const [eventStartAndEndDates, setEventStartAndEndDates] = useState<DateRange | undefined>();
-  const [emailsToInvite, setEmailsToInvite] = useState([
-    "deveras-ventura@ventechdigital.com",
-    "ventura@ventechdigital.com.br",
-  ]);
+  const [emailsToInvite, setEmailsToInvite] = useState<string[]>([]);
 
   const [isConfirmTripModalOpen, setIsConfirmTripModalOpen] = useState(false);
 
@@ -76,12 +74,6 @@ export function CreateTripPage() {
 
   const createTrip = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    
-    console.log(destination)
-    console.log(ownerName)
-    console.log(ownerEmail)
-    console.log(eventStartAndEndDates)
-    console.log(emailsToInvite)
 
     if (
         !destination || 
@@ -114,7 +106,7 @@ export function CreateTripPage() {
 
         <div className="flex flex-col items-center gap-3">
           <img src="/logo.svg" alt="plann.er" />
-          <p className="text-zinc-300 text-lg">Convide seus amigos e planeje sua próxima viagem!</p>
+          <p className="text-zinc-300 text-lg">Invite your friends and plan your next trip!</p>
         </div>
 
         <div className="space-y-4">
@@ -138,8 +130,8 @@ export function CreateTripPage() {
         </div>
 
         <p className="text-zinc-500 text-sm">
-          Ao planejar sua viagem pela plann.er, você automaticamente concorda <br />
-          com nossos <a className="text-zinc-300 underline" href="#">termos de uso</a> e <a className="text-zinc-300 underline" href="#">políticas de privacidade</a>
+          When planning your trip with plann.er, you automatically <br />
+          agree to our <a className="text-zinc-300 underline" href="#">terms</a> and <a className="text-zinc-300 underline" href="#">privacy policies</a>
         </p>
       </div>
 
@@ -158,6 +150,9 @@ export function CreateTripPage() {
           createTrip={createTrip}
           setOwnerName={setOwnerName}
           setOwnerEmail={setOwnerEmail}
+          destination={destination}
+          eventStartDate={eventStartAndEndDates?.from ? format(eventStartAndEndDates.from, 'MMM d') : ''}
+          eventEndDate={eventStartAndEndDates?.to ? format(eventStartAndEndDates.to, 'MMM d') : ''}
         />
       )}
 

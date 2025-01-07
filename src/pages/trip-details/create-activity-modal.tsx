@@ -33,13 +33,13 @@ export function CreateActivityModal({
             <div className="w-[540px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
                 <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                        <h2 className="text-lg font-semibold">Cadastrar atividade</h2>
+                        <h2 className="text-lg font-semibold">Register activity</h2>
                         <button type="button" onClick={closeCreateActivityModal}>
                             <X className="size-5 text-zinc-400" />
                         </button>
                     </div>
                     <p className="text-sm text-zinc-400">
-                        Todos os convidados podem visualizar as atividades.
+                        All guests can view the activities.
                     </p>
                 </div>
 
@@ -48,7 +48,7 @@ export function CreateActivityModal({
                         <Tag className="text-zinc-400 size-5" />
                         <input 
                             name="title" 
-                            placeholder="Qual a atividade?" 
+                            placeholder="What is the activity?" 
                             className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1" 
                         />
                     </div>
@@ -57,13 +57,14 @@ export function CreateActivityModal({
                         <input 
                             type="datetime-local"
                             name="occurs_at" 
-                            placeholder="Data e horário da atividade" 
+                            placeholder="Date and hour of the activity" 
                             className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1" 
+                            style={{ colorScheme: "dark" }}
                         />
                     </div>
 
                     <Button size="full">
-                        Salvar atividade
+                        Save activity
                     </Button>
                 </form>
             </div>

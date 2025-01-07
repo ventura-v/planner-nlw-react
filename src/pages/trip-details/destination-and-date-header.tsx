@@ -24,9 +24,9 @@ export function DestinationAndDateHeader() {
     const dispayedDate = 
         trip 
             ?  
-                format(trip.starts_at, `d 'de' MMM 'até '`).concat(format(trip.ends_at, `d 'de' MMM`))
+                format(trip.starts_at, `MMM d 'to '`).concat(format(trip.ends_at, 'MMM d'))
             : 
-                "Quando?";
+                "When?";
 
     return (
         <div className="flex items-center justify-between px-4 bg-zinc-900 h-16 rounded-xl shadow-shape">
@@ -44,7 +44,7 @@ export function DestinationAndDateHeader() {
                 <div className="w-px h-6 bg-zinc-800" />
 
                 <Button variant="secondary">
-                    Alterar local/data
+                    Change place/date
                     <Settings2 className="size-5"/>
                 </Button>
             </div>
